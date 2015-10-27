@@ -66,9 +66,8 @@ public class EEAResult {
 		/************************************************************
 		 * Insert the code of Exercise 5a below this comment!
 		 ************************************************************/
-		
-		// Remove this line!!!
-		return false;
+
+		return d.compareTo(new BigInteger("1"))==0;
 	}
 	
 	/**
@@ -81,8 +80,7 @@ public class EEAResult {
 		/************************************************************
 		 * Insert the code of Exercise 5b below this comment!
 		 ************************************************************/
-		
-		// Remove this line!!!
-		return new BigInteger("0");
+		return x.mod(b);
 	}
+	
 }

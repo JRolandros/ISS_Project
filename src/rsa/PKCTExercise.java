@@ -38,7 +38,7 @@ public class PKCTExercise {
 		 ************************************************************/
 		//first party
 		EEAResult eeaResult=EEA(a,b);	
-		System.out.println("D="+eeaResult.getD()+"\nX="+eeaResult.getX()+"\nY="+eeaResult.getY()+"\n");
+		System.out.println("D="+eeaResult.getD()+"\nX="+eeaResult.getX()+"\nY="+eeaResult.getY()+"\n a-1="+eeaResult.getX().mod(b));
 	}
 
 	void euclidExercise() {
@@ -88,8 +88,8 @@ public class PKCTExercise {
 		 * Uncomment the method after completion of the
                  * respective exercise!
 		 */
-		BigInteger a = new BigInteger("102");
-		BigInteger b = new BigInteger("75");
+		BigInteger a = new BigInteger("8002109");
+		BigInteger b = new BigInteger("7186131");
 
 		eeaResultExercise(a,b);
 		//euclidExercise();
