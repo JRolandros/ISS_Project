@@ -5,7 +5,30 @@ import java.util.Vector;
 
 public class PKCTExercise {
 	
-	void eeaResultExercise() {
+	 private EEAResult EEA(BigInteger a,BigInteger b){
+		 EEAResult result;
+		 BigInteger q=null;
+		 BigInteger temp=null;
+		 BigInteger bigInt0=new BigInteger("0");
+		 if(b.compareTo(bigInt0)==0)
+			{
+			 result=new EEAResult(a, b ,a, new BigInteger("1"), new BigInteger("0"));
+			 //System.out.println(" first step:\nD="+result.getD()+"\nX="+result.getX()+"\nY="+result.getY());
+			}
+		 else
+			{
+			 	q=a.divide(b);
+			 	result=EEA(b,a.mod(b));
+			 	temp=result.getX().subtract( (q.multiply( result.getY() ) ) );
+				result.setX(result.getY());
+				result.setY(temp);	
+				//System.out.println("D="+result.getD()+"\nX="+result.getX()+"\nY="+result.getY());
+			}
+		 		 
+		 return result;
+	 }
+	 
+	 void eeaResultExercise(BigInteger a,BigInteger b) {
 		
 		System.out.println("\nExercise 5:");
 		System.out.println("===========\n");
@@ -13,8 +36,9 @@ public class PKCTExercise {
 		/************************************************************
 		 * Insert the code of Exercise 5a+b below this comment!
 		 ************************************************************/
-		
-		
+		//first party
+		EEAResult eeaResult=EEA(a,b);	
+		System.out.println("D="+eeaResult.getD()+"\nX="+eeaResult.getX()+"\nY="+eeaResult.getY()+"\n");
 	}
 
 	void euclidExercise() {
@@ -64,7 +88,10 @@ public class PKCTExercise {
 		 * Uncomment the method after completion of the
                  * respective exercise!
 		 */
-		//eeaResultExercise();
+		BigInteger a = new BigInteger("102");
+		BigInteger b = new BigInteger("75");
+
+		eeaResultExercise(a,b);
 		//euclidExercise();
 		//modExpExercise();
 		//randomNumbers();
