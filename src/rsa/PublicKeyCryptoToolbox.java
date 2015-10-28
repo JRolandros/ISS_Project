@@ -2,6 +2,7 @@ package rsa;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
+import java.util.Random;
 import java.util.Vector;
 
 public class PublicKeyCryptoToolbox {
@@ -56,35 +57,46 @@ public class PublicKeyCryptoToolbox {
 		/************************************************************
 		 * Insert the code of Exercise 7a below this comment!
 		 ************************************************************/
+		
+		return new BigInteger(bit_length,prng);
 
-		// Remove this line!
-		return new BigInteger("0");
 	}
 
 	public BigInteger randomInteger(BigInteger n) {
 
 		/************************************************************
-		 * Insert the code of Exercise 7b below this comment!
+		 * Insert the code of Exercise 8a below this comment!
 		 ************************************************************/
-
-		// Remove this line!
-		return new BigInteger("0");
+		BigInteger r=null;
+		if(n.compareTo(new BigInteger("2"))>0)
+		{
+			do{
+				r=randomInteger(n.bitLength());
+			} while(r.compareTo(n)>=0||r.compareTo(BigInteger.ONE)<0);
+		}
+		return r;
 	}
 
 	public boolean witness(BigInteger a, BigInteger n) {
 
 		/************************************************************
-		 * Insert the code of Exercise 8a below this comment!
+		 * Insert the code of Exercise 9a below this comment!
 		 ************************************************************/
-
-		// Remove this line!
-		return false;
+		
+		if(n.compareTo(new BigInteger("2"))>0 &&a.compareTo(n.subtract(BigInteger.ONE))<=0&&a.compareTo(BigInteger.ONE)>=0){
+			
+		}
+		EEAResult result= extendedEuclideanAlgorithm(a,n);
+		if(result.isRelativlyPrime())
+			return true;
+		else
+			return false;
 	}
 
 	public boolean millerRabinTest(BigInteger n, int s) {
 
 		/************************************************************
-		 * Insert the code of Exercise 8b below this comment!
+		 * Insert the code of Exercise 9b below this comment!
 		 ************************************************************/
 		
 		// Remove this line!
@@ -94,7 +106,7 @@ public class PublicKeyCryptoToolbox {
 	public BigInteger randomPrime(int bit_length, int s) {
 
 		/************************************************************
-		 * Insert the code of Exercise 8d below this comment!
+		 * Insert the code of Exercise 9d below this comment!
 		 ************************************************************/
 		
 		// Remove this line!

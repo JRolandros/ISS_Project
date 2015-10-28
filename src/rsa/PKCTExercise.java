@@ -87,6 +87,14 @@ public class PKCTExercise {
 		/************************************************************
 		 * Insert the code of Exercise 8c below this comment!
 		 ************************************************************/
+		PublicKeyCryptoToolbox pkc=new PublicKeyCryptoToolbox();
+		BigInteger n=new BigInteger("102030405060708090");
+		int i=20;
+		while(i>0)
+		{
+			System.out.println("\n random "+(20-i+1)+"="+pkc.randomInteger(n));
+			i--;
+		}
 
 	}
 
@@ -97,6 +105,10 @@ public class PKCTExercise {
 		/************************************************************
 		 * Insert the code of Exercise 9c+e below this comment!
 		 ************************************************************/
+		PublicKeyCryptoToolbox pkc=new PublicKeyCryptoToolbox();
+		BigInteger a=new BigInteger("100");
+		BigInteger n=new BigInteger("902857742149935096180418505174605673479122931367283811478172");
+		System.out.println("Witness ? "+pkc.witness(a,n));
 
 	}
 	
@@ -110,9 +122,22 @@ public class PKCTExercise {
 		eeaResultExercise();
 		euclidExercise();
 		//modExpExercise();
-		//randomNumbers();
-		//primalityTest();
+		randomNumbers();
+		primalityTest();
 	}
+	
+	private static void cal(BigInteger b){
+		System.out.print("\nBinary representation of " + b + ": ");
+		for (int i=b.bitLength()-1; i>=0; i--) {
+		if (b.testBit(i)==true) {
+		System.out.print("1");
+		} else {
+		System.out.print("0");
+		}
+		}
+		System.out.println("");
+	}
+	
 	
 	public static void main(String[] args) {
 
