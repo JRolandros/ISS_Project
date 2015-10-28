@@ -4,31 +4,8 @@ import java.math.BigInteger;
 import java.util.Vector;
 
 public class PKCTExercise {
-	
-	 private EEAResult EEA(BigInteger a,BigInteger b){
-		 EEAResult result;
-		 BigInteger q=null;
-		 BigInteger temp=null;
-		 BigInteger bigInt0=new BigInteger("0");
-		 if(b.compareTo(bigInt0)==0)
-			{
-			 result=new EEAResult(a, b ,a, new BigInteger("1"), new BigInteger("0"));
-			 //System.out.println(" first step:\nD="+result.getD()+"\nX="+result.getX()+"\nY="+result.getY());
-			}
-		 else
-			{
-			 	q=a.divide(b);
-			 	result=EEA(b,a.mod(b));
-			 	temp=result.getX().subtract( (q.multiply( result.getY() ) ) );
-				result.setX(result.getY());
-				result.setY(temp);	
-				//System.out.println("D="+result.getD()+"\nX="+result.getX()+"\nY="+result.getY());
-			}
-		 		 
-		 return result;
-	 }
 	 
-	 void eeaResultExercise(BigInteger a,BigInteger b) {
+	 void eeaResultExercise() {
 		
 		System.out.println("\nExercise 5:");
 		System.out.println("===========\n");
@@ -36,9 +13,15 @@ public class PKCTExercise {
 		/************************************************************
 		 * Insert the code of Exercise 5a+b below this comment!
 		 ************************************************************/
-		//first party
-		EEAResult eeaResult=EEA(a,b);	
-		System.out.println("D="+eeaResult.getD()+"\nX="+eeaResult.getX()+"\nY="+eeaResult.getY()+"\n a-1="+eeaResult.getX().mod(b));
+		
+		EEAResult result=new EEAResult(new BigInteger("8002109"), new BigInteger("7186131"),new BigInteger("1"),new BigInteger("2996671").negate(),new BigInteger("3336940"));
+		if(result.isRelativlyPrime())
+		{
+			System.out.println("both number a and b are relativelly prime !");
+			System.out.println("And the multiplicative inverse is :"+result.getInverse());
+		}
+		else
+			System.out.println("both number a and b are not relativelly prime so there is no relative inverse of a!");
 	}
 
 	void euclidExercise() {
@@ -50,6 +33,40 @@ public class PKCTExercise {
 		 * Insert the code of Exercise 6b+c below this comment!
 		 ************************************************************/
 		
+		/*****************************************************
+		 *   6b
+		 */
+		System.out.println("\n Partie 6b:\n");
+		BigInteger a1 = new BigInteger("7019544");
+		BigInteger b1 = new BigInteger("8135112"); 
+		
+		EEAResult result=PublicKeyCryptoToolbox.extendedEuclideanAlgorithm(a1,b1);
+		
+		if(result.isRelativlyPrime())
+		{
+			System.out.println("both number a="+result.getA()+" and b="+result.getB()+" are relativelly prime !\n");
+			System.out.println("And the multiplicative inverse is x="+ result.getInverse() +"\n x="+result.getX()+"\ny="+result.getY()+"\n");
+		}
+		else
+			System.out.println("both number a="+result.getA()+" and b="+result.getB()+" are not relativelly prime so there is no relative inverse of a!\n");
+		
+		/***************************************************************************
+		 *           6C
+		 */
+		System.out.println("\n Partie 6c:\n");
+		BigInteger a2 = new BigInteger("7186131");		
+		BigInteger b2 = new BigInteger("8002109");
+		
+		EEAResult result1=PublicKeyCryptoToolbox.extendedEuclideanAlgorithm(a2,b2);
+		
+		if(result1.isRelativlyPrime())
+		{
+			System.out.println("both number a="+result1.getA()+" and b="+result1.getB()+" are relativelly prime !\n");
+			System.out.println("And the multiplicative inverse is x="+ result1.getInverse()+"\n x="+result.getX()+"\ny="+result.getY());
+		}
+		else
+			System.out.println("both number a="+result1.getA()+" and b="+result1.getB()+" are not relativelly prime so there is no relative inverse of a!\n");
+		
 	}
 	
 	void modExpExercise() {
@@ -57,7 +74,7 @@ public class PKCTExercise {
 		System.out.println("===========\n");
 
 		/************************************************************
-		 * Insert the code of Exercise 6b+c below this comment!
+		 * Insert the code of Exercise 7b+c below this comment!
 		 ************************************************************/
 
 		
@@ -88,11 +105,10 @@ public class PKCTExercise {
 		 * Uncomment the method after completion of the
                  * respective exercise!
 		 */
-		BigInteger a = new BigInteger("8002109");
-		BigInteger b = new BigInteger("7186131");
+		
 
-		eeaResultExercise(a,b);
-		//euclidExercise();
+		eeaResultExercise();
+		euclidExercise();
 		//modExpExercise();
 		//randomNumbers();
 		//primalityTest();

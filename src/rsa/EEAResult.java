@@ -66,8 +66,8 @@ public class EEAResult {
 		/************************************************************
 		 * Insert the code of Exercise 5a below this comment!
 		 ************************************************************/
-
-		return d.compareTo(new BigInteger("1"))==0;
+		
+		return (d.compareTo(BigInteger.ONE)==0);
 	}
 	
 	/**
@@ -80,7 +80,12 @@ public class EEAResult {
 		/************************************************************
 		 * Insert the code of Exercise 5b below this comment!
 		 ************************************************************/
+		if(x.mod(b).compareTo(BigInteger.ZERO)>0)
 		return x.mod(b);
+		else
+		{
+			return x.mod(b).negate();
+		}
 	}
 	
 }

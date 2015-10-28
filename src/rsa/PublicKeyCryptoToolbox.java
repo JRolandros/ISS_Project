@@ -18,13 +18,27 @@ public class PublicKeyCryptoToolbox {
 		/************************************************************
 		 * Insert the code of Exercise 6a below this comment!
 		 ************************************************************/
-
-		// Remove this line!
-		return new EEAResult(new BigInteger("0"), 
-				new BigInteger("0"), 
-				new BigInteger("0"), 
-				new BigInteger("0"), 
-				new BigInteger("0"));
+		EEAResult result;
+		EEAResult result1;
+		 BigInteger q=null;
+		 BigInteger temp=null;
+		 if(b.compareTo(BigInteger.ZERO)==0)
+			{
+			  result=new EEAResult(a, b ,a, BigInteger.ONE, BigInteger.ZERO);
+			}
+		 else
+			{
+			 	q=a.divide(b);
+			 	
+			 	result=extendedEuclideanAlgorithm(b,a.mod(b));
+			 	
+				temp=result.getX().subtract( (q.multiply( result.getY() ) ) );
+				result.setX(result.getY());
+				result.setY(temp);
+				
+			}
+		 result1=new EEAResult(a, b ,result.getD(),result.getX() , result.getY());
+		 return result1;
 	}
 
 	static public BigInteger modExp(BigInteger a, BigInteger b, BigInteger m) {
@@ -32,7 +46,7 @@ public class PublicKeyCryptoToolbox {
 		/************************************************************
 		 * Insert the code of Exercise 7a below this comment!
 		 ************************************************************/
-
+		
 		// Remove this line!
 		return new BigInteger("0");
 	}
