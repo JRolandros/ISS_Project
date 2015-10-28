@@ -76,7 +76,25 @@ public class PKCTExercise {
 		/************************************************************
 		 * Insert the code of Exercise 7b+c below this comment!
 		 ************************************************************/
-
+		BigInteger a= new BigInteger("17");
+		BigInteger b= new BigInteger("1005");
+		BigInteger m= new BigInteger("230");
+		BigInteger c=BigInteger.ONE;		
+		BigInteger d= new BigInteger("1");		
+		
+		for (int i = b.bitLength(); i>=0; i--){
+			 c=c.add(c);
+			 d=(d.multiply(d)).mod(m);
+			if(b.testBit(i)==true){
+			c=c.add(BigInteger.ONE);	
+			d=(d.multiply(a)).mod(m);	
+		  }
+		}
+		
+		
+		System.out.println("the result with modular exponentiation is: "+d);
+		BigInteger r=a.modPow(b, m);
+		System.out.println("the result with method modPow() is: "+r);
 		
 	}
 	
@@ -109,7 +127,7 @@ public class PKCTExercise {
 
 		eeaResultExercise();
 		euclidExercise();
-		//modExpExercise();
+		modExpExercise();
 		//randomNumbers();
 		//primalityTest();
 	}

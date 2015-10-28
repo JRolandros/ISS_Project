@@ -23,7 +23,7 @@ public class PublicKeyCryptoToolbox {
 		 BigInteger q=null;
 		 BigInteger temp=null;
 		 if(b.compareTo(BigInteger.ZERO)==0)
-			{
+			{	
 			  result=new EEAResult(a, b ,a, BigInteger.ONE, BigInteger.ZERO);
 			}
 		 else
@@ -38,7 +38,7 @@ public class PublicKeyCryptoToolbox {
 				
 			}
 		 result1=new EEAResult(a, b ,result.getD(),result.getX() , result.getY());
-		 return result1;
+		 return result1; 
 	}
 
 	static public BigInteger modExp(BigInteger a, BigInteger b, BigInteger m) {
@@ -46,9 +46,20 @@ public class PublicKeyCryptoToolbox {
 		/************************************************************
 		 * Insert the code of Exercise 7a below this comment!
 		 ************************************************************/
+		BigInteger c=BigInteger.ONE;
 		
-		// Remove this line!
-		return new BigInteger("0");
+		BigInteger d= new BigInteger("1");
+		
+		
+		for (int i = b.bitLength(); i>=0; i--){
+			 c=c.add(c);
+			 d=(d.multiply(d)).mod(m);
+			if(b.testBit(i)==true){
+			c=c.add(BigInteger.ONE);	
+			d=(d.multiply(a)).mod(m);	
+		  }
+		}
+		return d;
 	}
 
 	public BigInteger randomInteger(int bit_length) {
@@ -66,7 +77,7 @@ public class PublicKeyCryptoToolbox {
 		/************************************************************
 		 * Insert the code of Exercise 7b below this comment!
 		 ************************************************************/
-
+         
 		// Remove this line!
 		return new BigInteger("0");
 	}
@@ -99,6 +110,18 @@ public class PublicKeyCryptoToolbox {
 		
 		// Remove this line!
 		return new BigInteger("0");
+	}
+	
+	public static void main(String[] args) {
+
+	
+		//BigInteger a= new BigInteger("17");
+		//BigInteger b= new BigInteger("1005");
+		//BigInteger c= new BigInteger("230");
+		//System.out.println("the result :" +modExp(a, b, c));
+		//BigInteger r=a.modPow(b, c);
+		//System.out.println(r);	
+		
 	}
 
 }
