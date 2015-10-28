@@ -80,12 +80,9 @@ public class EEAResult {
 		/************************************************************
 		 * Insert the code of Exercise 5b below this comment!
 		 ************************************************************/
-		if(x.mod(b).compareTo(BigInteger.ZERO)>0)
+
 		return x.mod(b);
-		else
-		{
-			return x.mod(b).negate();
-		}
+
 	}
 	
 }

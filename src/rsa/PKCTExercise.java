@@ -62,7 +62,7 @@ public class PKCTExercise {
 		if(result1.isRelativlyPrime())
 		{
 			System.out.println("both number a="+result1.getA()+" and b="+result1.getB()+" are relativelly prime !\n");
-			System.out.println("And the multiplicative inverse is x="+ result1.getInverse()+"\n x="+result.getX()+"\ny="+result.getY());
+			System.out.println("And the multiplicative inverse is x="+ result1.getInverse()+"\n x="+result1.getX()+"\ny="+result1.getY());
 		}
 		else
 			System.out.println("both number a="+result1.getA()+" and b="+result1.getB()+" are not relativelly prime so there is no relative inverse of a!\n");
