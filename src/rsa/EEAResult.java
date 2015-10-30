@@ -1,5 +1,5 @@
 package rsa;
-
+// a remetre au plustard le 16 novembre
 import java.math.BigInteger;
 
 public class EEAResult {
@@ -80,7 +80,7 @@ public class EEAResult {
 		/************************************************************
 		 * Insert the code of Exercise 5b below this comment!
 		 ************************************************************/
-
+// a remetre au plustard le 16 novembre
 		return x.mod(b);
 
 	}
