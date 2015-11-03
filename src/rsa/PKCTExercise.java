@@ -124,10 +124,11 @@ public class PKCTExercise {
 		 * Insert the code of Exercise 9c+e below this comment!
 		 ************************************************************/
 		PublicKeyCryptoToolbox pkc=new PublicKeyCryptoToolbox();
-		BigInteger a=new BigInteger("100");
-		BigInteger n=new BigInteger("902857742149935096180418505174605673479122931367283811478172");
-		System.out.println("Witness ? "+pkc.witness(a,n));
-
+		
+		BigInteger n1=new BigInteger("343232674978653231166402657365997144371953839307928119227511");
+		BigInteger n2=new BigInteger("667984267564412673929015509827448340743034959781814076053617");
+		BigInteger n3=new BigInteger("902857742149935096180418505174605673479122931367283811478172");
+		System.out.println("Witness ? "+pkc.millerRabinTest(n2, 100));
 	}
 	
 	void run() {

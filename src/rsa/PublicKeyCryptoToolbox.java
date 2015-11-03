@@ -83,7 +83,7 @@ public class PublicKeyCryptoToolbox {
 		{
 			do{
 				r=randomInteger(n.bitLength());
-			} while(r.compareTo(n)>=0||r.compareTo(BigInteger.ONE)<0);
+			} while(r.compareTo(n)>0||r.compareTo(BigInteger.ONE)<0);
 		}
 		return r;
 	}
@@ -93,25 +93,39 @@ public class PublicKeyCryptoToolbox {
 		/************************************************************
 		 * Insert the code of Exercise 9a below this comment!
 		 ************************************************************/
+		BigInteger oldModulo=BigInteger.ONE;
+		BigInteger modulo=BigInteger.ONE;
 		
-		if(n.compareTo(new BigInteger("2"))>0 &&a.compareTo(n.subtract(BigInteger.ONE))<=0&&a.compareTo(BigInteger.ONE)>=0){
+			BigInteger n_1=n.subtract(BigInteger.ONE); //b=n-1
+			for(int i=n_1.bitLength();i>=0;i--){
+				oldModulo=modulo;
+				modulo=(modulo.multiply(modulo)).mod(n);
+				if( (modulo.compareTo(BigInteger.ONE)==0)&&(oldModulo.compareTo(BigInteger.ONE)!=0)&&(oldModulo.compareTo(n_1)!=0))
+					return true;
+				if(n_1.testBit(i)==true)
+					modulo=(modulo.multiply(a)).mod(n);							
+			}
+			if(modulo.compareTo(BigInteger.ONE)!=0)
+				return true;
 			
-		}
-		EEAResult result= extendedEuclideanAlgorithm(a,n);
-		if(result.isRelativlyPrime())
-			return true;
-		else
-			return false;
+		return false;
 	}
 
 	public boolean millerRabinTest(BigInteger n, int s) {
 
 		/************************************************************
-		 * Insert the code of Exercise 9b below this comment!
+		 * Insert the code of Exercise 9b below this comment!s
 		 ************************************************************/
-		
-		// Remove this line!
-		return false;
+		BigInteger randNum=BigInteger.ONE;//initialize randNum=1 no matter  for that value in the following
+		boolean result = false;
+		for(int i=1;i<=s;i++){
+			randNum= randomInteger(n);
+			result = witness(randNum, n);
+			System.out.println("Result : " + result);
+			if(result)
+				return !result;
+		}
+		return !result;
 	}
 
 	public BigInteger randomPrime(int bit_length, int s) {
@@ -123,17 +137,17 @@ public class PublicKeyCryptoToolbox {
 		// Remove this line!
 		return new BigInteger("0");
 	}
-
+/*
 	public static void main(String[] args) {
 
 	
-		//BigInteger a= new BigInteger("17");
-		//BigInteger b= new BigInteger("1005");
-		//BigInteger c= new BigInteger("230");
-		//System.out.println("the result :" +modExp(a, b, c));
-		//BigInteger r=a.modPow(b, c);
-		//System.out.println(r);	
+		BigInteger a= new BigInteger("17");
+		BigInteger b= new BigInteger("1005");
+		BigInteger c= new BigInteger("230");
+		System.out.println("the result :" +modExp(a, b, c));
+		BigInteger r=a.modPow(b, c);
+		System.out.println(r);	
 		
 	}
-
+*/
 }
