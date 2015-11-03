@@ -121,7 +121,6 @@ public class PublicKeyCryptoToolbox {
 		for(int i=1;i<=s;i++){
 			randNum= randomInteger(n);
 			result = witness(randNum, n);
-			System.out.println("Result : " + result);
 			if(result)
 				return !result;
 		}
@@ -133,9 +132,12 @@ public class PublicKeyCryptoToolbox {
 		/************************************************************
 		 * Insert the code of Exercise 9d below this comment!
 		 ************************************************************/
+		BigInteger randN=randomInteger(bit_length);
+		while(!millerRabinTest(randN, s)){
+			randN=randomInteger(bit_length);				
+		}
 		
-		// Remove this line!
-		return new BigInteger("0");
+		return randN;
 	}
 /*
 	public static void main(String[] args) {
