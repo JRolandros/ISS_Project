@@ -22,7 +22,7 @@ public class RSAExercise {
 		BigInteger d = BigInteger.ZERO;
 		BigInteger e = BigInteger.ZERO;
 		
-		int bit_length=128;
+		int bit_length=256;
 		int s=50;
 
 		/************************************************************
