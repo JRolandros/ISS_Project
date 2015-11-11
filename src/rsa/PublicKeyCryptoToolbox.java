@@ -19,27 +19,27 @@ public class PublicKeyCryptoToolbox {
 		/************************************************************
 		 * Insert the code of Exercise 6a below this comment!
 		 ************************************************************/
+		EEAResult tempResult;
 		EEAResult result;
-		EEAResult result1;
-		 BigInteger q=null;
-		 BigInteger temp=null;
+		BigInteger q=null;
+		BigInteger temp=null;
+		
 		 if(b.compareTo(BigInteger.ZERO)==0)
 			{
-			  result=new EEAResult(a, b ,a, BigInteger.ONE, BigInteger.ZERO);
+			  tempResult=new EEAResult(a, b ,a, BigInteger.ONE, BigInteger.ZERO);
 			}
 		 else
 			{
 			 	q=a.divide(b);
 			 	
-			 	result=extendedEuclideanAlgorithm(b,a.mod(b));
+			 	tempResult=extendedEuclideanAlgorithm(b,a.mod(b));
 			 	
-				temp=result.getX().subtract( (q.multiply( result.getY() ) ) );
-				result.setX(result.getY());
-				result.setY(temp);
-				
+				temp=tempResult.getX().subtract( (q.multiply( tempResult.getY() ) ) );
+				tempResult.setX(tempResult.getY());
+				tempResult.setY(temp);
 			}
-		 result1=new EEAResult(a, b ,result.getD(),result.getX() , result.getY());
-		 return result1;
+		 result=new EEAResult(a, b ,tempResult.getD(),tempResult.getX() , tempResult.getY());
+		 return result;
 	}
 
 	static public BigInteger modExp(BigInteger a, BigInteger b, BigInteger m) {
@@ -48,10 +48,9 @@ public class PublicKeyCryptoToolbox {
 		 * Insert the code of Exercise 7a below this comment!
 		 ************************************************************/
 		BigInteger c=BigInteger.ONE;
-		
-		BigInteger d= new BigInteger("1");
-		
-		
+
+		BigInteger d=BigInteger.ONE;
+
 		for (int i = b.bitLength(); i>=0; i--){
 			 c=c.add(c);
 			 d=(d.multiply(d)).mod(m);
@@ -70,7 +69,6 @@ public class PublicKeyCryptoToolbox {
 		 ************************************************************/
 		
 		return new BigInteger(bit_length,prng);
-
 	}
 
 	public BigInteger randomInteger(BigInteger n) {
@@ -103,7 +101,7 @@ public class PublicKeyCryptoToolbox {
 				if( (modulo.compareTo(BigInteger.ONE)==0)&&(oldModulo.compareTo(BigInteger.ONE)!=0)&&(oldModulo.compareTo(n_1)!=0))
 					return true;
 				if(n_1.testBit(i)==true)
-					modulo=(modulo.multiply(a)).mod(n);							
+					modulo=(modulo.multiply(a)).mod(n);
 			}
 			if(modulo.compareTo(BigInteger.ONE)!=0)
 				return true;
@@ -132,24 +130,12 @@ public class PublicKeyCryptoToolbox {
 		/************************************************************
 		 * Insert the code of Exercise 9d below this comment!
 		 ************************************************************/
-		BigInteger randN=randomInteger(bit_length);
-		while(!millerRabinTest(randN, s)){
-			randN=randomInteger(bit_length);				
+		BigInteger randNum=randomInteger(bit_length);
+		while(!millerRabinTest(randNum, s)){
+			randNum=randomInteger(bit_length);
 		}
 		
-		return randN;
+		return randNum;
 	}
-/*
-	public static void main(String[] args) {
 
-	
-		BigInteger a= new BigInteger("17");
-		BigInteger b= new BigInteger("1005");
-		BigInteger c= new BigInteger("230");
-		System.out.println("the result :" +modExp(a, b, c));
-		BigInteger r=a.modPow(b, c);
-		System.out.println(r);	
-		
-	}
-*/
 }

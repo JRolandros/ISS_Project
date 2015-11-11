@@ -16,11 +16,10 @@ public class RSAEncryptor {
 	public BigInteger encrypt(BigInteger x) {
 		
 		/************************************************************
-		 * Insert the code of Exercise 10b below this comment!
+		 * Insert the code of Exercise 11b below this comment!
 		 ************************************************************/
-
-		// Remove this line!
-		return new BigInteger("0");
+	
+		return x.modPow(e, n);
 
 	}
 

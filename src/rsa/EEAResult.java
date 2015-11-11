@@ -80,9 +80,9 @@ public class EEAResult {
 		/************************************************************
 		 * Insert the code of Exercise 5b below this comment!
 		 ************************************************************/
-// a remetre au plustard le 16 novembre
-		return x.mod(b);
-
+		if(d.compareTo(BigInteger.ONE)==0)
+			return x.mod(b);
+		return null;
 	}
 	
 }

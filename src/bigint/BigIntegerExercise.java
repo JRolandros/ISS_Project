@@ -23,7 +23,7 @@ public class BigIntegerExercise {
 		BigInteger d = new BigInteger("761");
 		BigInteger anobymous = new BigInteger("4");		
 		
-		System.out.println("The result is " + (a.multiply(b).subtract(anobymous)).divide(c).add((d.multiply(d)).subtract(a.subtract(b))));
+		System.out.println("\nThe result of the computation is " + (a.multiply(b).subtract(anobymous)).divide(c).add((d.multiply(d)).subtract(a.subtract(b)))+"\n");
 
 	}
 
@@ -38,17 +38,17 @@ public class BigIntegerExercise {
 		BigInteger b = new BigInteger("12891");
 		
 		if(a.compareTo(b) < 0)
-			System.out.println(a + " is strictly less than " + b);
+			System.out.println("\n"+a + " is strictly less than " + b);
 		if(a.compareTo(b) <= 0)
-			System.out.println(a + " is less than or equal to " + b);
+			System.out.println("\n"+a + " is less than or equal to " + b);
 		if(	a.compareTo(b) == 0)
-			System.out.println(a + " is equal to " + b);
+			System.out.println("\n"+a + " is equal to " + b);
 		if(	a.compareTo(b) >= 0)
-			System.out.println(a + " is greater than or equal to " + b);
+			System.out.println("\n"+a + " is greater than or equal to " + b);
 		if(	a.compareTo(b) > 0)
-			System.out.println(a + " is strictly greater than " + b);
+			System.out.println("\n"+a + " is strictly greater than " + b);
 		if(a.compareTo(b) != 0)
-			System.out.println(a + " is different from " + b);		
+			System.out.println("\n"+a + " is different from " + b);		
 		
 	}
 
@@ -61,21 +61,21 @@ public class BigIntegerExercise {
 		 ************************************************************/
 
 		SecureRandom prng = new SecureRandom();
-		BigInteger Num64 = new BigInteger(64, prng);
-		BigInteger Num128 = new BigInteger(128, prng);
-		BigInteger Num256 = new BigInteger(256, prng);
-		BigInteger Num512 = new BigInteger(512, prng);
-		BigInteger Num1024 = new BigInteger(1024, prng);
-		BigInteger Num2048 = new BigInteger(2048, prng);  
+		BigInteger Num64_bit = new BigInteger(64, prng);
+		BigInteger Num128_bit = new BigInteger(128, prng);
+		BigInteger Num256_bit = new BigInteger(256, prng);
+		BigInteger Num512_bit = new BigInteger(512, prng);
+		BigInteger Num1024_bit = new BigInteger(1024, prng);
+		BigInteger Num2048_bit = new BigInteger(2048, prng);  
 
 		
 		
-		System.out.println("Random 64: " + Num64);
-		System.out.println("Random 128: " + Num128);
-		System.out.println("Random 256: " + Num256);
-		System.out.println("Random 512: " + Num512);
-		System.out.println("Random 1024: " + Num1024);
-		System.out.println("Random 2048: " + Num2048);
+		System.out.println("\nRandom 64 bits: " + Num64_bit);
+		System.out.println("\nRandom 128 bits: " + Num128_bit);
+		System.out.println("\nRandom 256 bits: " + Num256_bit);
+		System.out.println("\nRandom 512 bits: " + Num512_bit);
+		System.out.println("\nRandom 1024 bits: " + Num1024_bit);
+		System.out.println("\nRandom 2048 bits: " + Num2048_bit);
 	}
 
 	public void run() {

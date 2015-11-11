@@ -15,13 +15,12 @@ public class RSAExercise {
 		/************************************************************
 		 * Use the following variables in your implementation!
 		 ************************************************************/
-		
 		BigInteger p = BigInteger.ZERO;
 		BigInteger q = BigInteger.ZERO;
 		BigInteger n = BigInteger.ZERO;
 		BigInteger phin = BigInteger.ZERO;
-		BigInteger d = BigInteger.ZERO;;
-		BigInteger e = BigInteger.ZERO;;
+		BigInteger d = BigInteger.ZERO;
+		BigInteger e = BigInteger.ZERO;
 		
 		int bit_length=128;
 		int s=50;
@@ -30,7 +29,17 @@ public class RSAExercise {
 		 * Insert the code of Exercise 10 below this comment!
 		 ************************************************************/
 		
-				
+		p = pkct.randomPrime(bit_length,s); 
+		q = pkct.randomPrime(bit_length,s);
+		   
+		n = p.multiply(q);
+		phin = (p.subtract(BigInteger.ONE)).multiply((q.subtract(BigInteger.ONE)));
+		   
+		do {
+				e = pkct.randomInteger(phin);		    	 
+		   } while (!PublicKeyCryptoToolbox.extendedEuclideanAlgorithm(e, phin).isRelativlyPrime());
+		   
+		d = PublicKeyCryptoToolbox.extendedEuclideanAlgorithm(e, phin).getInverse(); 
 		/************************************************************
 		 * Do NOT change anyting below this line!
 		 ************************************************************/
@@ -50,12 +59,41 @@ public class RSAExercise {
 		/************************************************************
 		 * Insert the code of Exercise 11c+d+e below this comment!
 		 ************************************************************/
+		BigInteger p = BigInteger.ZERO;
+		BigInteger q = BigInteger.ZERO;
+		BigInteger n = BigInteger.ZERO;
+		BigInteger phin = BigInteger.ZERO;
+		BigInteger d = BigInteger.ZERO;
+		BigInteger e = BigInteger.ZERO;
 		
+		int bit_length=128;
+		int s=50;
+		
+		p = pkct.randomPrime(bit_length,s); 
+		q = pkct.randomPrime(bit_length,s);
+		   
+		n = p.multiply(q);
+		phin = (p.subtract(BigInteger.ONE)).multiply((q.subtract(BigInteger.ONE)));
+		   
+		do {
+				e = pkct.randomInteger(phin);
+				
+		   } while (!PublicKeyCryptoToolbox.extendedEuclideanAlgorithm(e, phin).isRelativlyPrime());
+		   
+		 d = PublicKeyCryptoToolbox.extendedEuclideanAlgorithm(e, phin).getInverse();
 
+		 RSAEncryptor encryptor=new RSAEncryptor(n, e);
+		   
+	     String plainText="This subject was very hard but we did it well. Thank you sir!!!";
+	     Vector<BigInteger> encrypted=encryptor.encrypt(plainText);
+	     System.out.println("Encrypted message: "+encrypted);
+		   
 		/************************************************************
 		 * Insert the code of Exercise 12c+d+e below this comment!
 		 ************************************************************/
-
+		   
+		 RSADecryptor decryptor=new RSADecryptor(p,q ,d);
+		 System.out.println("decripted message: "+decryptor.decrypt(encrypted));
 	}
 	
 	public void finalTestPreparation() {
@@ -118,10 +156,10 @@ public class RSAExercise {
 		/*
 		 * Uncomment the methods after the implementation
 		 */
-		//rsaParamsExercise();
-		//rsaExercise();
+		rsaParamsExercise();
+		rsaExercise();
 		//finalTestPreparation();
-		//finalTest();
+		finalTest();
 	}
 	
 	

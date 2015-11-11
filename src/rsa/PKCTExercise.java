@@ -11,17 +11,17 @@ public class PKCTExercise {
 		System.out.println("===========\n");
 
 		/************************************************************
-		 * Insert the code of Exercise 5a+b below this comment!
+		 * Insert the code of Exercise 5c below this comment!
 		 ************************************************************/
 		
 		EEAResult result=new EEAResult(new BigInteger("8002109"), new BigInteger("7186131"),new BigInteger("1"),new BigInteger("2996671").negate(),new BigInteger("3336940"));
 		if(result.isRelativlyPrime())
 		{
-			System.out.println("both number a and b are relativelly prime !");
-			System.out.println("And the multiplicative inverse is :"+result.getInverse());
+			System.out.println("\nboth number a=8002109 and b=7186131 are relativelly prime ! ");
+			System.out.println("And the multiplicative inverse is :"+result.getInverse()+"\n");
 		}
 		else
-			System.out.println("both number a and b are not relativelly prime so there is no relative inverse of a!");
+			System.out.println("\nboth number a=8002109 and b=7186131 are not relativelly prime so there is no relative inverse of a!\n");
 	}
 
 	void euclidExercise() {
@@ -44,11 +44,11 @@ public class PKCTExercise {
 		
 		if(result.isRelativlyPrime())
 		{
-			System.out.println("both number a="+result.getA()+" and b="+result.getB()+" are relativelly prime !\n");
+			System.out.println("\nboth number a="+result.getA()+" and b="+result.getB()+" are relativelly prime ! ");
 			System.out.println("And the multiplicative inverse is x="+ result.getInverse() +"\n x="+result.getX()+"\ny="+result.getY()+"\n");
 		}
 		else
-			System.out.println("both number a="+result.getA()+" and b="+result.getB()+" are not relativelly prime so there is no relative inverse of a!\n");
+			System.out.println("\nboth number a="+result.getA()+" and b="+result.getB()+" are not relativelly prime so there is no relative inverse of a!\n");
 		
 		/***************************************************************************
 		 *           6C
@@ -130,6 +130,8 @@ public class PKCTExercise {
 		BigInteger n1=new BigInteger("343232674978653231166402657365997144371953839307928119227511");
 		BigInteger n2=new BigInteger("667984267564412673929015509827448340743034959781814076053617");
 		BigInteger n3=new BigInteger("902857742149935096180418505174605673479122931367283811478172");
+		
+		// here are some tests of your results
 		System.out.println("n1 is Witness ? "+pkc.millerRabinTest(n2, 100));
 		System.out.println("n2 is Witness ? "+pkc.millerRabinTest(n2, 100));
 		System.out.println("n3 is Witness ? "+pkc.millerRabinTest(n2, 100));
@@ -148,24 +150,11 @@ public class PKCTExercise {
                  * respective exercise!
 		 */
 		
-
 		eeaResultExercise();
 		euclidExercise();
 		modExpExercise();
 		randomNumbers();
 		primalityTest();
-	}
-	
-	private static void cal(BigInteger b){
-		System.out.print("\nBinary representation of " + b + ": ");
-		for (int i=b.bitLength()-1; i>=0; i--) {
-		if (b.testBit(i)==true) {
-		System.out.print("1");
-		} else {
-		System.out.print("0");
-		}
-		}
-		System.out.println("");
 	}
 	
 	
