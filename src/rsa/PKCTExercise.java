@@ -129,12 +129,12 @@ public class PKCTExercise {
 		
 		BigInteger n1=new BigInteger("343232674978653231166402657365997144371953839307928119227511");
 		BigInteger n2=new BigInteger("667984267564412673929015509827448340743034959781814076053617");
-		BigInteger n3=new BigInteger("902857742149935096180418505174605673479122931367283811478172");
+		BigInteger n3=new BigInteger("1130242628975018265380102543215055338361897468448588898970126");
 		
 		// here are some tests of your results
-		System.out.println("n1 is Witness ? "+pkc.millerRabinTest(n2, 100));
+		System.out.println("n1 is Witness ? "+pkc.millerRabinTest(n1, 100));
 		System.out.println("n2 is Witness ? "+pkc.millerRabinTest(n2, 100));
-		System.out.println("n3 is Witness ? "+pkc.millerRabinTest(n2, 100));
+		System.out.println("n3 is Witness ? "+pkc.millerRabinTest(n3, 100));
 		
 		System.out.println("\nExercise 9e:\n");
 		
